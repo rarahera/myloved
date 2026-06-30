@@ -1,0 +1,778 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink-neon: #ff1493;
+    --pink-light: #ff69b4;
+    --pink-soft: #ffb6d9;
+    --blue-neon: #00d4ff;
+    --purple-dark: #2d1b69;
+    --dark-bg: #0a0015;
+    --white: #ffffff;
+    --text-pink: #ff1493;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark-bg);
+    color: var(--white);
+}
+
+/* ===== PAGE TRANSITIONS ===== */
+.page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out;
+    z-index: 1;
+}
+
+.page.hidden {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ===== PAGE 1: INTERACTIVE GALAXY ===== */
+.page-1 {
+    background: var(--dark-bg);
+    position: relative;
+}
+
+.galaxy-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#galaxyCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.love-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    animation: popIn 0.8s ease-out forwards;
+}
+
+.love-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 20px var(--pink-neon)) drop-shadow(0 0 40px rgba(255, 20, 147, 0.5));
+    animation: heartGlow 2s ease-in-out infinite;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes heartGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 20px var(--pink-neon)) drop-shadow(0 0 40px rgba(255, 20, 147, 0.5));
+    }
+    50% {
+        filter: drop-shadow(0 0 30px var(--pink-neon)) drop-shadow(0 0 60px rgba(255, 20, 147, 0.8));
+    }
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 50px;
+    z-index: 10;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--pink-neon), var(--pink-light));
+    color: var(--white);
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
+    animation: fadeInUp 1s ease-out 2.5s forwards;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(255, 20, 147, 0.8);
+}
+
+.btn-white {
+    background: var(--white);
+    color: var(--text-pink);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.btn-white:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(255, 20, 147, 0.8);
+    background: var(--pink-soft);
+    color: var(--white);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== PAGE 2: GALAXY & MESSAGE ===== */
+.page-2 {
+    background: var(--dark-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.galaxy-bg-page2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#starsCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.message-container {
+    position: relative;
+    z-index: 5;
+    max-width: 600px;
+    text-align: center;
+    padding: 40px;
+    animation: fadeIn 1s ease-out;
+}
+
+.message-text {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--white);
+    text-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
+    letter-spacing: 1px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== PAGE 3: CHAPTER 1 ===== */
+.page-3 {
+    background: linear-gradient(135deg, var(--purple-dark), var(--dark-bg));
+    position: relative;
+}
+
+.chapter-header {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 5;
+}
+
+.chapter-header h1 {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--pink-neon), var(--blue-neon));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
+}
+
+.chapter-header h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--pink-light);
+    letter-spacing: 2px;
+}
+
+.character-silhouette {
+    width: 200px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.silhouette {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 20px rgba(255, 192, 203, 0.5));
+    animation: floatAnimation 3s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.narration-container {
+    max-width: 600px;
+    text-align: center;
+    margin-top: 50px;
+    padding: 0 40px;
+    min-height: 100px;
+}
+
+.narration {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--white);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.word {
+    display: inline;
+    opacity: 0;
+    animation: wordAppear 0.3s ease-out forwards;
+}
+
+@keyframes wordAppear {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== PAGE 4: NEON BUBBLES ===== */
+.page-4 {
+    background: var(--dark-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.neon-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1), transparent),
+                radial-gradient(circle at 80% 80%, rgba(255, 20, 147, 0.1), transparent);
+}
+
+.bubbles-container {
+    position: relative;
+    z-index: 5;
+    width: 90%;
+    max-width: 800px;
+    height: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-content: center;
+    justify-content: center;
+}
+
+.bubble {
+    min-width: 150px;
+    padding: 20px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--pink-neon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--pink-neon);
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.6), inset 0 0 20px rgba(255, 20, 147, 0.2);
+    animation: bubbleFloat 4s ease-in-out infinite;
+}
+
+@keyframes bubbleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+.bubble:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.bubble:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.bubble:nth-child(4) {
+    animation-delay: 0.9s;
+}
+
+.bubble:nth-child(5) {
+    animation-delay: 1.2s;
+}
+
+/* ===== PAGE 5: GROWING FLOWER ===== */
+.page-5 {
+    background: linear-gradient(135deg, var(--dark-bg), var(--purple-dark));
+    position: relative;
+    overflow: hidden;
+}
+
+.flower-scene {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.flower-container {
+    position: relative;
+    width: 300px;
+    height: 400px;
+}
+
+.flower-stem {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 0;
+    background: linear-gradient(to top, #4a7c3f, #2d5016);
+    animation: stemGrow 3s ease-out forwards;
+}
+
+@keyframes stemGrow {
+    from {
+        height: 0;
+    }
+    to {
+        height: 250px;
+    }
+}
+
+.leaf {
+    position: absolute;
+    bottom: 150px;
+    width: 30px;
+    height: 40px;
+    background: #4a7c3f;
+    border-radius: 50% 0;
+    transform-origin: bottom center;
+    animation: leafSway 2s ease-in-out infinite;
+}
+
+.leaf.left {
+    left: 80px;
+    transform: rotate(-45deg);
+}
+
+.leaf.right {
+    right: 80px;
+    transform: rotate(45deg);
+}
+
+@keyframes leafSway {
+    0%, 100% {
+        transform: rotate(-45deg) rotateZ(0deg);
+    }
+    50% {
+        transform: rotate(-45deg) rotateZ(5deg);
+    }
+}
+
+.leaf.right {
+    0%, 100% {
+        transform: rotate(45deg) rotateZ(0deg);
+    }
+    50% {
+        transform: rotate(45deg) rotateZ(-5deg);
+    }
+}
+
+.leaf-text {
+    position: absolute;
+    font-size: 12px;
+    color: var(--pink-light);
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.flower-bud {
+    position: absolute;
+    bottom: 240px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 40px;
+    background: var(--pink-neon);
+    border-radius: 50% 50% 50% 0;
+    animation: budGrow 1s ease-out forwards;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.flower-bud:hover {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 0 20px var(--pink-neon);
+}
+
+@keyframes budGrow {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+.photo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.photo-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.photo-modal-content {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid var(--pink-neon);
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 20, 147, 0.5);
+}
+
+.photo-modal img {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.photo-modal p {
+    font-size: 16px;
+    color: var(--white);
+    line-height: 1.6;
+    color: var(--pink-light);
+    font-style: italic;
+}
+
+.rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.raindrop {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background: rgba(0, 212, 255, 0.6);
+    animation: fall 2s linear;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(400px);
+        opacity: 0;
+    }
+}
+
+.animals-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.animal {
+    position: absolute;
+    bottom: 40px;
+    animation: walk 6s linear infinite;
+}
+
+.rabbit {
+    width: 40px;
+    height: 40px;
+}
+
+.butterfly {
+    width: 50px;
+    height: 50px;
+    animation: flutter 3s ease-in-out infinite;
+}
+
+.bird {
+    width: 50px;
+    height: 40px;
+    animation: fly 5s ease-in-out infinite;
+}
+
+@keyframes walk {
+    from {
+        left: -50px;
+    }
+    to {
+        left: calc(100% + 50px);
+    }
+}
+
+@keyframes flutter {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+}
+
+@keyframes fly {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-100px);
+    }
+}
+
+/* ===== PAGE 6: FINAL BLOOMING FLOWER ===== */
+.page-6 {
+    background: var(--dark-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.final-galaxy {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(45, 27, 105, 0.3), transparent),
+                radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.1), transparent),
+                radial-gradient(circle at 70% 70%, rgba(255, 20, 147, 0.1), transparent);
+    pointer-events: none;
+}
+
+.final-flower-container {
+    position: relative;
+    z-index: 5;
+    width: 200px;
+    height: 400px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.final-flower {
+    width: 100%;
+    height: 100%;
+    animation: fadeIn 1s ease-out;
+}
+
+.final-flower line {
+    animation: stemGrowFinal 2s ease-out forwards;
+}
+
+@keyframes stemGrowFinal {
+    from {
+        y1: 400;
+        y2: 400;
+    }
+    to {
+        y1: 400;
+        y2: 200;
+    }
+}
+
+.petal {
+    animation: petalBlooming 2s ease-out 2s forwards;
+    transform-origin: 100px 100px;
+}
+
+@keyframes petalBlooming {
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.final-message {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 5;
+    animation: fadeInUp 1s ease-out 3s forwards;
+    opacity: 0;
+}
+
+.final-message h1 {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--pink-neon), var(--blue-neon));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
+}
+
+.final-message p {
+    font-size: 18px;
+    color: var(--white);
+    line-height: 1.6;
+    max-width: 600px;
+    font-weight: 300;
+}
+
+.falling-petals {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 6;
+}
+
+.petal-fall {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--pink-light);
+    border-radius: 50% 0;
+    animation: petalFall 3s linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes petalFall {
+    from {
+        transform: translateY(-50px) rotateZ(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100vh) rotateZ(360deg);
+        opacity: 0;
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .chapter-header h1 {
+        font-size: 36px;
+    }
+
+    .chapter-header h2 {
+        font-size: 20px;
+    }
+
+    .message-text {
+        font-size: 24px;
+    }
+
+    .narration {
+        font-size: 16px;
+    }
+
+    .final-message h1 {
+        font-size: 36px;
+    }
+
+    .final-message p {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+}
