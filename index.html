@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Prasetia Aditya Nugraha - Wisuda 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Page 1: Interactive Galaxy -->
+    <div class="page page-1" id="page1">
+        <div class="galaxy-container">
+            <canvas id="galaxyCanvas"></canvas>
+        </div>
+        <div class="love-text" id="loveText" style="opacity: 0;">
+            <svg viewBox="0 0 100 100" class="love-svg">
+                <path d="M50,95 C20,75 5,60 5,45 C5,30 15,20 25,20 C35,20 45,28 50,35 C55,28 65,20 75,20 C85,20 95,30 95,45 C95,60 80,75 50,95 Z" fill="url(#pinkGradient)" />
+                <defs>
+                    <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff1493;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ff69b4;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <button class="btn btn-primary" id="btn1" style="opacity: 0;">Sesuatu Untukmu</button>
+    </div>
+
+    <!-- Page 2: Galaxy & Message -->
+    <div class="page page-2 hidden" id="page2">
+        <div class="galaxy-bg-page2">
+            <canvas id="starsCanvas"></canvas>
+        </div>
+        <div class="message-container">
+            <p class="message-text">Untuk seseorang yang telah bertahan lebih lama dari pada yang diketahui banyak orang</p>
+        </div>
+        <button class="btn btn-white" id="btn2">Lanjutkan</button>
+    </div>
+
+    <!-- Page 3: Chapter 1 -->
+    <div class="page page-3 hidden" id="page3">
+        <div class="chapter-header">
+            <h1>Bab 1</h1>
+            <h2>Sebelum Hari Ini</h2>
+        </div>
+        <div class="character-silhouette">
+            <svg viewBox="0 0 100 200" class="silhouette">
+                <ellipse cx="50" cy="30" rx="15" ry="20" fill="rgba(255, 192, 203, 0.3)"/>
+                <path d="M50,50 Q30,70 20,120 Q50,140 80,120 Q70,70 50,50 Z" fill="rgba(255, 192, 203, 0.3)"/>
+                <path d="M20,70 L10,130" stroke="rgba(255, 192, 203, 0.3)" stroke-width="3"/>
+                <path d="M80,70 L90,130" stroke="rgba(255, 192, 203, 0.3)" stroke-width="3"/>
+                <path d="M40,130 L35,180" stroke="rgba(255, 192, 203, 0.3)" stroke-width="3"/>
+                <path d="M60,130 L65,180" stroke="rgba(255, 192, 203, 0.3)" stroke-width="3"/>
+            </svg>
+        </div>
+        <div class="narration-container">
+            <p class="narration" id="narration"></p>
+        </div>
+        <button class="btn btn-white" id="btn3" style="opacity: 0;">Lanjutkan</button>
+    </div>
+
+    <!-- Page 4: Chapter 2 - Neon Bubbles -->
+    <div class="page page-4 hidden" id="page4">
+        <div class="neon-background"></div>
+        <div class="chapter-header">
+            <h1>Bab 2</h1>
+            <h2>Hal yang Ingin Aku Katakan Padamu</h2>
+        </div>
+        <div class="bubbles-container" id="bubblesContainer">
+            <!-- Bubbles akan di-generate dengan JS -->
+        </div>
+        <button class="btn btn-white" id="btn4">Lanjutkan</button>
+    </div>
+
+    <!-- Page 5: Chapter 3 - Growing Flower -->
+    <div class="page page-5 hidden" id="page5">
+        <div class="chapter-header">
+            <h1>Bab 3</h1>
+            <h2>Untuk Masa Depan</h2>
+        </div>
+        <div class="flower-scene">
+            <div class="flower-container" id="flowerContainer">
+                <!-- Flower akan di-generate dengan JS -->
+            </div>
+            <div class="animals-container" id="animalsContainer">
+                <!-- Animals akan di-generate dengan JS -->
+            </div>
+        </div>
+        <button class="btn btn-white" id="btn5">Lanjutkan</button>
+    </div>
+
+    <!-- Page 6: Final - Blooming Flower -->
+    <div class="page page-6 hidden" id="page6">
+        <div class="final-galaxy"></div>
+        <div class="final-flower-container">
+            <svg viewBox="0 0 200 400" class="final-flower" id="finalFlower">
+                <!-- Stem -->
+                <line x1="100" y1="400" x2="100" y2="200" stroke="url(#stemGradient)" stroke-width="3" />
+                <!-- Petals -->
+                <g id="petalsGroup">
+                    <ellipse cx="100" cy="100" rx="20" ry="40" fill="url(#petalGradient)" class="petal"/>
+                    <ellipse cx="100" cy="100" rx="20" ry="40" fill="url(#petalGradient)" class="petal" transform="rotate(60 100 100)"/>
+                    <ellipse cx="100" cy="100" rx="20" ry="40" fill="url(#petalGradient)" class="petal" transform="rotate(120 100 100)"/>
+                    <ellipse cx="100" cy="100" rx="20" ry="40" fill="url(#petalGradient)" class="petal" transform="rotate(180 100 100)"/>
+                    <ellipse cx="100" cy="100" rx="20" ry="40" fill="url(#petalGradient)" class="petal" transform="rotate(240 100 100)"/>
+                    <ellipse cx="100" cy="100" rx="20" ry="40" fill="url(#petalGradient)" class="petal" transform="rotate(300 100 100)"/>
+                </g>
+                <!-- Center -->
+                <circle cx="100" cy="100" r="10" fill="#FFD700" />
+                <defs>
+                    <linearGradient id="stemGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#2d5016;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#4a7c3f;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="petalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff1493;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ff69b4;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="final-message">
+            <h1>SELAMAT WISUDA SAYANGKU</h1>
+            <p>Bunga ini bukan tumbuh dalam sehari, ia tumbuh karena terus bertahan. sama sepertimu, sayang</p>
+            <p class="graduate-info">Prasetia Aditya Nugraha<br>Teknik Sipil<br>Universitas Gorontalo<br>2026</p>
+        </div>
+        <div class="falling-petals" id="fallingPetals"></div>
+    </div>
+
+    <!-- Audio -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
