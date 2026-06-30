@@ -143,6 +143,23 @@ html, body {
     color: var(--white);
 }
 
+.btn-close-modal {
+    padding: 10px 30px;
+    background: var(--pink-neon);
+    color: var(--white);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-close-modal:hover {
+    background: var(--pink-light);
+    transform: scale(1.05);
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -418,7 +435,8 @@ html, body {
     background: #4a7c3f;
     border-radius: 50% 0;
     transform-origin: bottom center;
-    animation: leafSway 2s ease-in-out infinite;
+    opacity: 0;
+    animation: leafAppear 0.6s ease-out forwards, leafSway 2s ease-in-out 0.6s infinite;
 }
 
 .leaf.left {
@@ -431,6 +449,17 @@ html, body {
     transform: rotate(45deg);
 }
 
+@keyframes leafAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 @keyframes leafSway {
     0%, 100% {
         transform: rotate(-45deg) rotateZ(0deg);
@@ -441,6 +470,10 @@ html, body {
 }
 
 .leaf.right {
+    animation: leafAppear 0.6s ease-out forwards, leafSwayRight 2s ease-in-out 0.6s infinite;
+}
+
+@keyframes leafSwayRight {
     0%, 100% {
         transform: rotate(45deg) rotateZ(0deg);
     }
@@ -457,6 +490,9 @@ html, body {
     white-space: nowrap;
     opacity: 0;
     animation: fadeIn 0.6s ease-out forwards;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .flower-bud {
@@ -495,7 +531,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -512,13 +548,25 @@ html, body {
 }
 
 .photo-modal-content {
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     padding: 30px;
     border-radius: 20px;
     border: 2px solid var(--pink-neon);
     max-width: 500px;
     text-align: center;
     box-shadow: 0 0 40px rgba(255, 20, 147, 0.5);
+    animation: modalPop 0.3s ease-out;
+}
+
+@keyframes modalPop {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .photo-modal img {
@@ -526,6 +574,7 @@ html, body {
     max-height: 300px;
     border-radius: 10px;
     margin-bottom: 20px;
+    display: block;
 }
 
 .photo-modal p {
@@ -646,6 +695,7 @@ html, body {
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .final-flower {
@@ -694,6 +744,8 @@ html, body {
     z-index: 5;
     animation: fadeInUp 1s ease-out 3s forwards;
     opacity: 0;
+    width: 90%;
+    max-width: 600px;
 }
 
 .final-message h1 {
@@ -712,8 +764,16 @@ html, body {
     font-size: 18px;
     color: var(--white);
     line-height: 1.6;
-    max-width: 600px;
     font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.graduate-info {
+    font-size: 16px !important;
+    color: var(--pink-light) !important;
+    font-style: italic;
+    margin-top: 20px;
+    line-height: 2;
 }
 
 .falling-petals {
@@ -774,5 +834,14 @@ html, body {
     .btn {
         padding: 12px 30px;
         font-size: 14px;
+    }
+
+    .photo-modal-content {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .photo-modal img {
+        max-height: 200px;
     }
 }
