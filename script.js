@@ -24,8 +24,10 @@ let photoIndex = 0;
 // ===== AUDIO SETUP =====
 function initAudio() {
     const audio = document.getElementById('bgMusic');
-    audio.volume = 0.3;
-    audio.play().catch(err => console.log('Audio autoplay prevented'));
+    if (audio) {
+        audio.volume = 0.3;
+        audio.play().catch(err => console.log('Audio autoplay prevented'));
+    }
 }
 
 // ===== PAGE NAVIGATION =====
